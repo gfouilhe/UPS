@@ -20,4 +20,7 @@ int main() {
 
     std::cout << "Compte de cli2 :" << std::endl;
     acc2.afficherSolde();
+    // const int MAX = 10 ;
+    // Client banque1[MAX] ; // statique
+    // Client * banque2 ; // dynamique
 };
