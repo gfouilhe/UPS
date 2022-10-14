@@ -17,4 +17,8 @@ Document::~Document() {
     delete[] this->mots;
 }
 
-Document
+Document::ajouter(string &mot) {
+    if (nbElem < taille) {
+        this->mots[nbElem++] = mot;
+    }
+}

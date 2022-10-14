@@ -12,3 +12,12 @@ Banque::Banque(int max) {
 Banque::~Banque() {
     delete[] this->tab;
 }
+
+void Banque::afficher() {
+    cout << "Nombre de Clients : " << nbClients << endl;
+    cout << "Nombre Maximum de Clients : " << MaxClient << endl;
+    cout << "Tableau : " << endl;
+    for (int i=0; i<nbClients; i++){
+		cout << tab[i];
+        }
+}

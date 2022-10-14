@@ -10,5 +10,6 @@ public:
 
     Banque(int max);
     ~Banque();
+    void afficher();
 
 } ;
