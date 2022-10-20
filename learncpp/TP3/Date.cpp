@@ -21,5 +21,7 @@ int Date::getDay() {return this->day;}
 
 int Date::getYear() {return this->year;}
 
-
+bool Date::operator==(const Date &d) {
+    return (d.day == this->day) && (d.month == this->month) && (d.year == this->year) ;
+}
 

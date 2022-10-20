@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Client.h"
 
+using namespace std;
 
 Client::Client() {
     this->name = "";
@@ -30,4 +31,15 @@ Date Client::getDate() {
 }
 Compte Client::getAcc() {
     return this->account;
+}
+
+void Client::afficherClient() {
+    cout << "Name : " << this->name << endl;
+    cout << "Date of Birth : " << this->name <<endl;
+    Compte acc = this->account;
+    acc.afficherSolde();
+}
+
+bool Client::operator==(const Client &cli) {
+    return this->name == cli.name && this->date_of_birth == cli.date_of_birth && this->account == cli.account;
 }

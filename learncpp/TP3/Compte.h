@@ -11,6 +11,7 @@ public:
     void afficherSolde();
     void virement(Compte &c, float m);
     float getSolde();
+    bool operator==(const Compte &c);
 
 };
 

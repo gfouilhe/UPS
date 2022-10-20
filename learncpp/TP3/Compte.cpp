@@ -13,4 +13,8 @@ void Compte::virement(Compte &c, float m) {
     this->retrait(m);
     }
 float Compte::getSolde() {return this->solde;}
+bool Compte::operator==(const Compte &c) {
+        return this-> solde == c.solde; 
+    }
+
 
