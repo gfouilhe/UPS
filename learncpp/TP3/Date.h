@@ -8,4 +8,5 @@ public:
     int getDay();
     int getMonth();
     int getYear();
+    bool operator==(const Date &d);
 };

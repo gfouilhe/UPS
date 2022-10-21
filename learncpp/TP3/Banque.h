@@ -10,6 +10,9 @@ public:
 
     Banque(int max);
     ~Banque();
+    Banque(const Banque &b);
     void afficher();
+    void ajouter(Client cli);
+    bool appartient(Client cli);
 
 } ;

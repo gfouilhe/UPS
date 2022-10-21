@@ -13,12 +13,12 @@ public:
 
     Client();
     Client(std::string n, Date date, Compte acc);
-    // Client(int MaxClient)
     void changeName(std::string name);
     void changeDate(Date date);
     void changeAcc(Compte acc);
     std::string getName();
     Date getDate();
     Compte getAcc();
-
+    void afficherClient();
+    bool operator==(const Client &cli); 
 };
