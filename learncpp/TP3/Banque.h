@@ -13,6 +13,8 @@ public:
     Banque(const Banque &b);
     void afficher();
     void ajouter(Client cli);
+    void supprimer(Client cli);
     bool appartient(Client cli);
+    void transfertVers(Banque &b, Client cli);
 
 } ;

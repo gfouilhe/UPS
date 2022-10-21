@@ -9,4 +9,5 @@ public:
     int getMonth();
     int getYear();
     bool operator==(const Date &d);
+    void afficherDate();
 };

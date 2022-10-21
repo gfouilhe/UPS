@@ -25,3 +25,6 @@ bool Date::operator==(const Date &d) {
     return (d.day == this->day) && (d.month == this->month) && (d.year == this->year) ;
 }
 
+void Date::afficherDate() {
+    cout << this->month <<"/"<< this->day <<"/"<< this->year << endl;
+}

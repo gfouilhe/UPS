@@ -35,7 +35,8 @@ Compte Client::getAcc() {
 
 void Client::afficherClient() {
     cout << "Name : " << this->name << endl;
-    cout << "Date of Birth : " << this->name <<endl;
+    Date dob = this->date_of_birth;
+    cout << "Date of Birth : "; dob.afficherDate(); cout <<endl;
     Compte acc = this->account;
     acc.afficherSolde();
 }
