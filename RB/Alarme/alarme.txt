@@ -1,0 +1,26 @@
+P:
+manuella    andrew      
+0.6         0.4
+
+RetP:
+oui         non         P        R         
+0.05        0.95        manuella seches    
+0.1         0.9         manuella mouillees 
+0.1         0.9         andrew   seches    
+0.2         0.8         andrew   mouillees 
+
+RetC:
+oui         non         RetP 
+0.7         0.3         oui  
+0.2         0.8         non  
+
+R:
+seches      mouillees   
+0.3         0.7
+
+S:
+robotique   autre       P        
+1           0           manuella 
+0.1         0.9         andrew   
+
+

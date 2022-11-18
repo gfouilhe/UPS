@@ -1,0 +1,204 @@
+// ~->[DNET-1]->~
+
+// File created by Norsys using Netica 6.04 on May 23, 2018 at 12:57:35 UTC.
+
+bnet Book_Bags {
+AutoCompile = TRUE;
+autoupdate = TRUE;
+comment = "\n\
+	Book Bags                  Copyright 1998-2018 Norsys Software Corp.\n\n\
+	There are two book bags each containing 10 poker chips.  In one\n\
+	bag there are 7 red and 3 blue.  In the other bag there are 3 \n\
+	red and 7 blue. The subject knows this information. \n\
+	One of the two bags is chosen (with equal probability) to draw \n\
+	the chips from, but the subject is not told which.\n\n\
+	Five chips are drawn from that bag one at a time and shown to \n\
+	the subject, then returned to the bag.  \n\
+	\| \n\
+	After each draw the subject reports which bag he believes\n\
+	the chips are coming from and provides a probability that the \n\
+	chips are being drawn from that bag.\n\n\
+	This Bayes net gives in node Book_Bag the ideal probability, \n\
+	as each draw is entered as a finding.\n\
+	The problem comes from the early \"revision of judgment\" work \n\
+	that indicated that the probabilities people gave were \n\
+	conservative with respect to Bayes.\n\n\
+	From:\n\
+	Phillips, L. D. and Edwards, W. (1966) \"Conservatism in a simple \n\
+	probability inference task\" in Journal of Experimental Psychology, \n\
+	72, 346-357.";
+whenchanged = 1527080106;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 10;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	ShowLinkStrengths = 1;
+	windowposn = (22, 6, 546, 444);
+	CommentShowing = TRUE;
+	CommentWindowPosn = (22, 442, 620, 861);
+	resolution = 72;
+	drawingbounds = (1080, 720);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00c0c0c0;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00f8eed2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00d3caa6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00c8c8c8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00ffffb4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00ffbdbd;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00dee8ff;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00f0fafa;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet target {Disabled = 1; Color = 0x00c8c8c8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		magnify = 1;
+		};
+	};
+
+node Book_Bag {
+	discrete = TRUE;
+	states = (bag_1, bag_2);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = ();
+	probs = 
+		// bag 1        bag 2        
+		  (0.5,         0.5);
+	whenchanged = 902161315;
+	belief = (0.5, 0.5);
+	visual V1 {
+		center = (114, 192);
+		height = 6;
+		};
+	};
+
+node Draw_1 {
+	discrete = TRUE;
+	states = (red, blue);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (Book_Bag);
+	probs = 
+		// red          blue          // Book_Bag 
+		  (0.7,         0.3,          // bag 1    
+		   0.3,         0.7);         // bag 2    ;
+	numcases = 1;
+	whenchanged = 1527079348;
+	belief = (0.5, 0.5);
+	visual V1 {
+		center = (372, 48);
+		height = 1;
+		};
+	};
+
+node Draw_2 {
+	discrete = TRUE;
+	states = (red, blue);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (Book_Bag);
+	probs = 
+		// red          blue          // Book_Bag 
+		  (0.7,         0.3,          // bag 1    
+		   0.3,         0.7);         // bag 2    ;
+	numcases = 1;
+	whenchanged = 1527079341;
+	belief = (0.5, 0.5);
+	visual V1 {
+		center = (372, 120);
+		height = 2;
+		};
+	};
+
+node Draw_3 {
+	discrete = TRUE;
+	states = (red, blue);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (Book_Bag);
+	probs = 
+		// red          blue          // Book_Bag 
+		  (0.7,         0.3,          // bag 1    
+		   0.3,         0.7);         // bag 2    ;
+	numcases = 1;
+	whenchanged = 1527079341;
+	belief = (0.5, 0.5);
+	visual V1 {
+		center = (372, 192);
+		height = 3;
+		};
+	};
+
+node Draw_4 {
+	discrete = TRUE;
+	states = (red, blue);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (Book_Bag);
+	probs = 
+		// red          blue          // Book_Bag 
+		  (0.7,         0.3,          // bag 1    
+		   0.3,         0.7);         // bag 2    ;
+	numcases = 1;
+	whenchanged = 1527079341;
+	belief = (0.5, 0.5);
+	visual V1 {
+		center = (372, 264);
+		height = 4;
+		};
+	};
+
+node Draw_5 {
+	discrete = TRUE;
+	states = (red, blue);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (Book_Bag);
+	probs = 
+		// red          blue          // Book_Bag 
+		  (0.7,         0.3,          // bag 1    
+		   0.3,         0.7);         // bag 2    ;
+	numcases = 1;
+	whenchanged = 1527079341;
+	belief = (0.5, 0.5);
+	visual V1 {
+		center = (372, 336);
+		height = 5;
+		};
+	};
+
+node TITLE1 {
+	discrete = TRUE;
+	numstates = 1;
+	kind = CONSTANT;
+	parents = ();
+	title = "Book Bags";
+	whenchanged = 902164252;
+	visual V1 {
+		center = (96, 48);
+		font = font {shape= "Arial"; size= 14;};
+		height = 7;
+		};
+	};
+
+node TITLE2 {
+	discrete = FALSE;
+	kind = CONSTANT;
+	parents = ();
+	title = "Copyright 1998 Norsys Software Corp.";
+	whenchanged = 1300836672;
+	visual V1 {
+		center = (114, 360);
+		font = font {shape= "Times New Roman"; size= 8;};
+		height = 8;
+		};
+	};
+NodeSet target {Nodes = (Book_Bag);};
+ElimOrder = (Draw_1, Draw_2, Draw_3, Draw_4, Book_Bag, Draw_5);
+};
