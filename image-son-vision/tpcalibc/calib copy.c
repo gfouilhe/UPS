@@ -232,8 +232,8 @@ Matrix Calibrage(Matrix MatP3, Matrix Matp2)
       p_chap_vals[i][j] = - sign * p_chap_vals[i][j] / norm;
     }
   }
-  // MatWriteAsc(P_chap,"Pg.mx");
-  return P_chap;
+  MatWriteAsc(P_chap,"Pg.mx");
+  return NULL;
 }
 
 
