@@ -174,10 +174,12 @@ Matrix Reconstruction(Matrix MatPg, Matrix MatPd, Matrix Matp2g, Matrix Matp2d)
   double **p2d = MatGetDouble(Matp2d);
 
   int n = MatNbRow(Matp2g);
+  Matrix MatResult = MatAlloc(Double,n,3);
+  double **R = MatGetDouble(MatResult);
 
   for (int i=0;i<n;i++)
   {
-    Matrix MatA = MatAlloc(Double,4,3);
+    Matrix MatA = MatAlloc(Double,4,4);
     double **A = MatGetDouble(MatA); 
 
     A[0][0] = pg[0][0] - p2g[i][0] * pg[2][0];
@@ -194,11 +196,41 @@ Matrix Reconstruction(Matrix MatPg, Matrix MatPd, Matrix Matp2g, Matrix Matp2d)
 
     A[3][0] = pd[1][0] - p2d[i][1] * pd[2][0];
     A[3][1] = pd[1][0] - p2d[i][1] * pd[2][1];
-    A[3][2] = pg[1][0] - p2d[i][1] * pd[2][2];
+    A[3][2] = pd[1][0] - p2d[i][1] * pd[2][2];
 
-    MatWriteAsc(MatA,"");
+    // b
+    A[0][3] = pg[0][3] - p2g[i][0] * pg[2][3];
+    A[1][3] = pg[1][3] - p2g[i][1] * pg[2][3];
+    A[2][3] = pd[0][3] - p2d[i][0] * pd[2][3];
+    A[3][3] = pd[1][3] - p2d[i][1] * pd[2][3];
 
+    //Calcul de AtA
+    Matrix At = MatAlloc(Double, 4, 4);
+    At = Transp(MatA); 
+    Matrix MatAtA = MatAlloc(Double, 4, 4);
+    MatAtA = Mult(At,MatA);
+    // Calcul des valeurs/vecteurs propres
+    Matrix Valpropres;
+    Matrix Vecpropres;
+    SymEig(MatAtA, &Valpropres, &Vecpropres);
+    double **VecP = MatGetDouble(Vecpropres);
+
+    //Calcul de la plus petite valeur propre et de son vecteur propre associé
+    int ind = IndMin(Valpropres);
+    Matrix VP = MatAlloc(Double,4,1);
+    double **V = MatGetDouble(VP);
+    for (int j=0;j<4;j++)
+    {
+      V[j][0] = VecP[j][ind];
+    }
+
+    for (int j=0;j<3;j++)
+    {
+      R[n][j] = V[j][0] / V[3][0];
+    }
   }
+
+  MatWriteAsc(MatResult,"");
   
  
   
